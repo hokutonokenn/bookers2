@@ -1,2 +1,28 @@
-<h1>Books#index</h1>
-<p>Find me in app/views/books/index.html.erb</p>
+<div class="container pt-3 pb-5">
+  <div class="row">
+    <div class="col-md-3 pr-1">
+      <!--プロフィール-->
+      <%= render "users/userinfo",user: @user %>
+      <!--投稿ページ-->
+      <%= render "books/newbook",book: @book %>
+
+    </div>
+
+    <!--投稿一覧-->
+    <div class="col-md-8 offset-md-1">
+      <!--見出し-->
+      <h2>Books</h2>
+      <table class="table">
+        <thead>
+          <tr>
+            <th></th>
+            <th>Title</th>
+            <th>Opinion</th>
+          </tr>
+        </thead>
+        <!--投稿データ-->
+
+      </table>
+    </div>
+  </div>
+</div>
