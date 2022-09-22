@@ -1,2 +1,45 @@
-<h1>Books#show</h1>
-<p>Find me in app/views/books/show.html.erb</p>
+<div class="container pt-3 pb-5">
+  <div class="row">
+    <div class="col-md-3 pr-1">
+      <!--プロフィール-->
+      <%= render "users/userinfo",user: @user %>
+      <!--投稿フォーム-->
+      <%= render "books/newbook",book: @book %>
+    </div>
+
+    <div class="col-md-8 offset-md-1">
+      <!--book詳細-->
+      <h2>Book detail</h2>
+        <div>
+          <table class="table">
+            <!--データ-->
+            <tbody>
+              <tr>
+                <td>
+                  <%= link_to user_path(@book.user.id) do %>
+                    <%= image_tag @book.user.get_profile_image(100,100) %></br>
+                    <%= @book.user.name %>
+                  <% end %>
+                  </a>
+                </td>
+                <td>
+                  <%= link_to @book.title %>
+                </td>
+                <td><%= @book.body %></td>
+                <td>
+                  <% if @book.user == current_user %>
+                    <%= link_to "Edit",edit_book_path(@book),class:"btn btn-success" %>
+                  <% end %>
+                </td>
+                <td>
+                  <% if @book.user == current_user %>
+                    <%= link_to "Destroy",book_path(@book),method: :delete,class:"btn btn-danger", data: {confirm: "本当に削除しますか？"} %>
+                  <% end %>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+</div>

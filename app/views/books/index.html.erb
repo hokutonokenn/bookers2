@@ -21,7 +21,28 @@
           </tr>
         </thead>
         <!--投稿データ-->
+        <% @books.each do |book| %>
+          <tbody>
+            <tr>
+              <td>
+                <!--ユーザー詳細にリンク-->
+                <%= link_to user_path(book.user.id) do %>
+                  <%= image_tag book.user.get_profile_image(80,80) %>
+                <% end %>
+              </td>
 
+              <td>
+                <!--ブック詳細にリンク-->
+                <%= link_to book_path(book.id) do %>
+                  <%= book.title %>
+                <% end %>
+              </td>
+
+              <td><%= book.body %></td>
+
+            </tr>
+          </tbody>
+        <% end %>
       </table>
     </div>
   </div>
