@@ -3,7 +3,7 @@
     <div class="col-md-3 pr-1">
       <!--プロフィール-->
       <%= render "users/userinfo",user: @user %>
-      <!--投稿フォーム-->
+      <!--投稿ページ-->
       <%= render "books/newbook",book: @book %>
     </div>
 
@@ -33,7 +33,7 @@
                 </td>
                 <td>
                   <% if @book.user == current_user %>
-                    <%= link_to "Destroy",book_path(@book),method: :delete,class:"btn btn-danger", data: {confirm: "本当に削除しますか？"} %>
+                    <%= link_to "Destroy",book_path(@book),method: :delete,class:"btn btn-danger", data: {confirm: "本当に消しますか？"} %>
                   <% end %>
                 </td>
               </tr>
