@@ -12,6 +12,7 @@ class UsersController < ApplicationController
     @book.user_id = current_user.id
     @book.save
     redirect_to book_path(@book.id)
+    flash[:success]="You have created book successfully."
   end
 
   def index
@@ -38,6 +39,7 @@ class UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     if @user.update(user_params)
+        flash[:notice] = "You have update user successfully."
         redirect_to user_path(@user.id)
     else
       render :edit

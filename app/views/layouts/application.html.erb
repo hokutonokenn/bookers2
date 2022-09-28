@@ -17,9 +17,14 @@
     <header>
       <%= render 'layouts/navbar' %>
     </header>
-
-    <%= yield %>
-
+    <main>
+    <div>
+     <p id="notice">
+       <%= flash[:notice] %>
+     </p>
+    </div>
+      <%= yield %>
+    </main>
     <footer>
       <div class="container mt-5">
         <div class="row">
