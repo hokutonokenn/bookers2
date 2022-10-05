@@ -1,7 +1,11 @@
 class UsersController < ApplicationController
-
-
-
+  before_action :authenticate_user!
+  before_action :ensure_correct_user, only: [:edit, :update]
+  def ensure_correct_user
+  	if current_user.id != params[:id].to_i
+  		redirect_to user_path(current_user.id)
+  	end
+  end
 
   def new
     @book = Book.new
@@ -30,7 +34,7 @@ class UsersController < ApplicationController
   def edit
      @user = User.find(params[:id])
     if @user == current_user
-      render "edit"
+      render :edit
     else
       redirect_to user_path(current_user.id)
     end
@@ -55,5 +59,6 @@ class UsersController < ApplicationController
   def book_params
     params.require(:book).permit(:title,:body)
   end
+
 
 end
